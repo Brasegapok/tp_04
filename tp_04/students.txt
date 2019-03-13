@@ -1,0 +1,100 @@
+Aliaga Belkis;TI1;3380586
+Beetschen Stephane;IN2;3380547
+Bejaoui Cyril;IN3;3380564
+Dragon Vincenzo;TI1;3380553
+El Yahyaoui Omar-Paul;TE2;3380595
+Houriet Thierry;TE3;3380564
+Kodra Cedric;SE4;3380573
+Le Courtois Christian;MT1;3380583
+Luthi Anis;MPE;3380508
+Meilhan Romain;MPE;3380518
+Ramos Hermida Jaoued;TI1;3380547
+Reichert Yves;MT1;3380521
+Rychener Redi;GM3;3380527
+Vercasson Kevin;GM2;3380515
+Verdel Christophe;CH2;3380547
+Ammann Eric;CH3;3380573
+Bernard Danilo David;TI1;3380592
+De Rosa Martin;IN2;3380598
+Di Stefano Vincent;IN3;3380536
+Gameiro Jean-Francois;TI1;3380578
+Mastelli Matthieu;TE2;3380524
+Nguetsop Jiongo Maude;TE3;3380521
+Scemama Nathalie;SE4;3380539
+Schwarz David;MT1;3380521
+Yosef Riccardo;MPE;3380584
+Andrades Joao;MPE;3380534
+Damico Damien;TI1;3380556
+Fourquier Pierre Dumas;MT1;3380505
+Kadyrova Fabien;GM3;3380514
+Marcon Martin;GM2;3380508
+Tuffet Tedros;CH2;3380571
+Antunes Javier;CH3;3380585
+Bradshaw Carmelo;TI1;3380557
+Caille Jonas;IN2;3380592
+Iten Karlygach;IN3;3380591
+Morando Sebastien;TI1;3380586
+Motta Gutierrez Emmanuelle;TE2;3380575
+Pereira Luis-Miguel;TE3;3380597
+Portmann Rynhart Daniel;SE4;3380542
+Schopfer Alexandre;MT1;3380551
+Besson Veronique;MPE;3380514
+Dzouali Michele;MPE;3380540
+Favre-Felix Sonia Gaviota;TI1;3380583
+Godoy Helio;MT1;3380568
+Guaragna Doris;GM3;3380501
+Ly Jean-Philippe;GM2;3380575
+Tounkara Marc;CH2;3380556
+Amedegnato Yves Thierry;CH3;3380503
+Andrey Yann;TI1;3380555
+Campiche Pablo;IN2;3380588
+Charkhesht Raphael;IN3;3380510
+Corbelle Gomez Hoang-Huy;TI1;3380542
+De Mayer Papa Samba;TE2;3380590
+Diallo Essoefli Djidjoe;TE3;3380515
+Dufeil Amael;SE4;3380528
+El Aidi Anna;MT1;3380506
+Farina Mehdi;MPE;3380525
+Favre Julio;MPE;3380593
+Lechot Anthony;TI1;3380530
+Bouchoucha Abdoulaye Yero;MT1;3380574
+Brugger Yann;GM3;3380552
+Buonavoglia Sami;GM2;3380534
+Chiappini Alex;CH2;3380590
+Chudzinski Bastien;CH3;3380574
+Crettaz Cedric;TI1;3380565
+Dieng Sami;IN2;3380516
+Domon Marc;IN3;3380554
+El Guamra Tiziano;TI1;3380548
+Fobasso Fabien;TE2;3380546
+Garzon Michael Tadeusz;TE3;3380519
+Lamas Jeremy;SE4;3380589
+Loureiro Seny;MT1;3380509
+Mbanna Frederic;MPE;3380583
+Paccard Idriss;MPE;3380520
+Malfray Etienne;TI1;3380523
+Montavon Jacobo;MT1;3380574
+Ndoki Olivier;IN3;3380547
+Pagnamenta Olivier;GM2;3380562
+Pasche Olivier;CH2;3380525
+Roh Olivier;CH3;3380585
+Sekri Olivier;TI1;3380516
+Tirador Olivier;IN2;3380521
+Wiederkehr Olivier;IN3;3380532
+Zufferey Olivier;TI1;3380592
+Bah Sabrina;TE2;3380501
+Gebs Julien;TE3;3380507
+Huguenin Fouad;SE4;3380518
+Janse van Rensburg Jayce David;MT1;3380523
+Lakh Michael;MPE;3380560
+Mbaye Marc;MPE;3380508
+Merle Thierno Hamidou;TI1;3380539
+Monge Jonathan;MT1;3380571
+Moukhtar Cedric;GM3;3380513
+Ntangang Benjamin;GM2;3380600
+Samy Aliou;CH2;3380582
+Sanchez Ahmadou Bamba;CH3;3380528
+Schirru Julien;TI1;3380511
+Schmid Julien;IN2;3380555
+Silva Martins Marc;IN3;3380549
+Stuppi Martin Cyrille;TI1;3380569
