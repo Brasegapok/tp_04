@@ -1,18 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-//#include "hash.h"  // uncomment when "hash.h" is ready to be used
+#include "hash.h"  // uncomment when "hash.h" is ready to be used
 
-#define STR_SIZE 80
-#define DEFAULT_DIREC_SIZE 100
-
-typedef struct{
-    char Name[STR_SIZE];
-    char Class[STR_SIZE];
-		int  Phone;
-} Students;
-
-Students directory[DEFAULT_DIREC_SIZE];
+Directory directory[DEFAULT_DIREC_SIZE];
+int size = DEFAULT_DIREC_SIZE;
 
 int new_tab(){
 	/*
@@ -40,6 +32,9 @@ int main(int argc,char** argv) {
 			fprintf(stderr, "File not found \"%s\"!", filename);
 			return EXIT_FAILURE;
 		}
+		else{
+			
+		}
 	}
 
 	int choice;
@@ -56,7 +51,7 @@ int main(int argc,char** argv) {
 		fprintf(stderr,"7: delete by phone#\n");
 		fprintf(stderr,"8: display dictionary content\n");
 		fprintf(stderr,"9: how full is the directory?\n");
-		fprintf(stderr,"Entrez votre choix:\n");
+		fprintf(stderr,"Please select one entry:\n");
 
 		char name[STR_SIZE];   
 		char class[4];
@@ -87,7 +82,7 @@ int main(int argc,char** argv) {
 				// (Example) 2: output.txt
 				fscanf(input,"%s",filename);  // !!! DO NOT MODIFY !!!
 				// Call here your function that saves the file <filename>
-
+				
 
 				// Output <number of written lines>
 				printf("103\n");   // !!! Respect the output format !!!
@@ -108,7 +103,7 @@ int main(int argc,char** argv) {
 
 				// Call here your function to insert name, class, phone in directory.
 				
-				/*----------*/
+				insert_student(name,class,phone,directory,size);
 				// No on-screen output
 
 				break;
@@ -121,7 +116,7 @@ int main(int argc,char** argv) {
 
 				// Call your search function <name> in the directory
 
-				/*----------*/
+				search_student_by_name(name,directory,size);
 				// Output <name;class;phone>
 
 				printf("Mathieu Landru;IT1;3458127\n");  // !!! Respect the output format !!! 
@@ -139,13 +134,14 @@ int main(int argc,char** argv) {
 				//               <name2;class2;phone>
 				//               <name3;clase3;phone>
 				//               ....
-
-				//
+				search_student_by_phone(phone,directory,size);
+				/*
 				printf("4\n"); // number of entries with this phone number
 				printf("Michel Joguin;MT1;3458127\n");  // !!! Respect the output format !!!
 				printf("Tom Martin;RT4;3458127\n");
 				printf("Mathieu Beguin;IT3;3458127\n");
 				printf("Mathieu Landru;IT1;3458127\n");
+				*/
 				break;
 
 			case 6: // Delete by name
@@ -154,7 +150,7 @@ int main(int argc,char** argv) {
 				fgets(line, STR_SIZE, input);    // !!! DO NOT MODIFY !!!
 				sscanf(line," %80[^\n]", name);  // !!! DO NOT MODIFY !!!
 				// Call your function to suppress <name> in the directory
-				/*--------*/
+				delete_student_by_name(name,directory,size);
 				// No output
 				break;
 
@@ -164,7 +160,7 @@ int main(int argc,char** argv) {
 				fscanf(input,"%d", &phone);  // !!! DO NOT MODIFY !!! 
 				// Call your function to suppress by phone
 
-				/*-------*/
+				delete_student_by_phone(phone, directory,size);
 
 				// No output
 				break;
@@ -177,18 +173,21 @@ int main(int argc,char** argv) {
 				//              <name2;class2;phone>
 				//              <name3;class3;phone>
 				//              ....
-				 
+				print_directory(directory,size);
+				 /*
 				printf("Aliaga Belkis;TI1;3380586\n");   // !!! Respect the output format !!!
 				printf("Beetschen Stephane;IN2;3380547\n");
 				printf("Bejaoui Cyril;IN3;3380564\n");
 				printf("Dragon Vincenzo;TI1;3380553\n");
+				*/
 				break;
 
 			case 9: // How full is the directory?
 				// Keyboard input <9:> */       
 				// Call your function querying how full is the directory
 				// Output <elements count> and <taille> from the hash table
-				printf("87 151\n");   // !!! Respect the output format !!!
+				check_directory_space(directory,size);
+				//printf("87 151\n");   // !!! Respect the output format !!!
 				break;     
 		}
 	} while (choice);

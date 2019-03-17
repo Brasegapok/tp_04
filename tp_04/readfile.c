@@ -13,17 +13,67 @@
 #include <readfile.h>
 
 
-#define LENGTH 256
 
 
 
+int write_file(char* new_file,char*tab_name,char*tab_class,int*tab_phone,int size)
+{
+	// Open file for reading
+	fp = fopen(new_file,"w");
+	for(int i = 0; i < size; i++)
+	{
+		fprintf (fp, "%s %s %d\n",tab_name[i],tab_class[i],tab_phone[i]);
+	}
+	fclose();
+}
 
 int read_file(filename)
 {
 	
+	// Open file for reading
+	fp = fopen(filename,"r");
+	if (!fp) {
+		fprintf(stderr,"file not found: %s\n", filename);
+		return EXIT_FAILURE;
+	}main
+
+	// Read the #lines
+	int line_cnt = 0;
+	while ((fgets(line,LENGTH,fp)) != NULL ) line_cnt++;
+	rewind(fp);
+
+	// Read and print each line in the file
+	char sep[] = ";";
+	int nb_fields = 3;
+	line_cnt = 1;
+
+	while ((fgets(line, LENGTH, fp)) != NULL ) {
+		char *token;
+		// Point to first token
+		token = strtok(line, sep);
+		// Iterate through other tokens and store them in fields
+		int cnt = 0;
+		char *fields[nb_fields];
+
+		while (token) {
+			if (cnt >= nb_fields) {
+				fprintf(stderr, "line %d has too many fields!\n", line_cnt);
+				continue;
+			}
+			fields[cnt] = token;
+			token = strtok(NULL, sep);
+			cnt++;
+		}
+
+		printf("%s / %s / %d\n", fields[0], fields[1], atoi(fields[2]));
+		line_cnt++;
+	}
+
+	// Close the file
+	fclose(fp); 
+	return EXIT_SUCCESS;
+
 }
-
-
 
 
 
