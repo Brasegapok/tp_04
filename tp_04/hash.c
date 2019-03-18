@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <hash.h>
+#include "hash.h"
 
 
 Students add_empty_student()
@@ -23,18 +23,18 @@ Students add_student(char *name, char *class, int phone)
 
 Directory* new_empty_directory(int size)
 {
-    Directory *new_dir = malloc(size * sizeof(int));
+    Directory *new_tab = malloc(size * sizeof(int));
     for (int i = 0; i < DEFAULT_DIREC_SIZE - 1; i++)
     {
-        new_dir[i].key_element = 0;
-        new_dir[i].state = EMPTY;
-        new_dir[i].Student = add_empty_student();
+        new_tab[i].key_element = 0;
+        new_tab[i].state = EMPTY;
+        new_tab[i].Student = add_empty_student();
     }
-    return new_dir;
+    return new_tab;
 }
 
-Directory* new_directory(){
-
+Directory* new_directory(char* file_content,int size){
+    
 }
 
 Directory* extend_previous_directory(Directory *old_dir, int size_extension)

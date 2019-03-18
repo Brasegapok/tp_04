@@ -10,13 +10,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <libgen.h>
-#include <readfile.h>
+#include "readfile.h"
 
 
-
-
-
-int write_file(char* new_file,char*tab_name,char*tab_class,int*tab_phone,int size)
+int write_file(char* file_content,int size)
 {
 	// Open file for reading
 	fp = fopen(new_file,"w");
@@ -27,19 +24,20 @@ int write_file(char* new_file,char*tab_name,char*tab_class,int*tab_phone,int siz
 	fclose();
 }
 
-int read_file(filename)
-{
-	
+//reads a file and returns a table with it's size as a tuple does not work, create a double pointer: file_content**
+(char*,int) read_file(filename)
+{	
+	char* file_content = malloc(FILE_LENGTH* sizeof(char))
 	// Open file for reading
 	fp = fopen(filename,"r");
 	if (!fp) {
 		fprintf(stderr,"file not found: %s\n", filename);
 		return EXIT_FAILURE;
-	}main
+	}
 
 	// Read the #lines
 	int line_cnt = 0;
-	while ((fgets(line,LENGTH,fp)) != NULL ) line_cnt++;
+	while ((fgets(line,FILE_LENGTH,fp)) != NULL ) line_cnt++;
 	rewind(fp);
 
 	// Read and print each line in the file
@@ -47,25 +45,29 @@ int read_file(filename)
 	int nb_fields = 3;
 	line_cnt = 1;
 
-	while ((fgets(line, LENGTH, fp)) != NULL ) {
+	while ((fgets(line, FILE_LENGTH, fp)) != NULL ) {
 		char *token;
 		// Point to first token
 		token = strtok(line, sep);
 		// Iterate through other tokens and store them in fields
 		int cnt = 0;
 		char *fields[nb_fields];
-
+		
 		while (token) {
 			if (cnt >= nb_fields) {
-				fprintf(stderr, "line %d has too many fields!\n", line_cnt);
+				//fprintf(stderr, "line %d has too many fields!\n", line_cnt);
 				continue;
 			}
 			fields[cnt] = token;
 			token = strtok(NULL, sep);
 			cnt++;
 		}
-
-		printf("%s / %s / %d\n", fields[0], fields[1], atoi(fields[2]));
+		
+		//printf("%s / %s / %d\n", fields[0], fields[1], atoi(fields[2]));
+	*/	
+	int line_cnt = 0;
+	while ((fgets(line, FILE_LENGTH, fp)) != NULL ) {		
+		file_content[line_cnt] = line;
 		line_cnt++;
 	}
 
@@ -92,7 +94,7 @@ int main(int argc,char** argv) {
 	if (!fp) {
 		fprintf(stderr,"file not found: %s\n", argv[1]);
 		return EXIT_FAILURE;
-	}main
+	}
 
 	// Read the #lines
 	int line_cnt = 0;

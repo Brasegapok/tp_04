@@ -1,26 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "hash.h"  // uncomment when "hash.h" is ready to be used
+#include "hash.h"  
 
-Directory directory[DEFAULT_DIREC_SIZE];
-int size = DEFAULT_DIREC_SIZE;
-
-int new_tab(){
-	/*
-	size_t myarray_size = 1000;
-   mystruct* myarray = malloc(myarray_size * sizeof(mystruct));
-
-   myarray_size += 1000;
-   mystruct* myrealloced_array = realloc(myarray, myarray_size * sizeof(mystruct));
-   if (myrealloced_array) {
-     myarray = myrealloced_array;
-   } else {
-     // deal with realloc failing because memory could not be allocated.
-   }
-   */
-}
-
+STR_SIZE
 
 int main(int argc,char** argv) {
 	// !!! DO NOT MODIFY !!!
@@ -32,11 +15,8 @@ int main(int argc,char** argv) {
 			fprintf(stderr, "File not found \"%s\"!", filename);
 			return EXIT_FAILURE;
 		}
-		else{
-			
-		}
 	}
-
+	directory = new_diretory()
 	int choice;
 	do {
 		// !!! DO NOT MODIFY this output!!!
@@ -51,10 +31,10 @@ int main(int argc,char** argv) {
 		fprintf(stderr,"7: delete by phone#\n");
 		fprintf(stderr,"8: display dictionary content\n");
 		fprintf(stderr,"9: how full is the directory?\n");
-		fprintf(stderr,"Please select one entry:\n");
+		fprintf(stderr,"Entrez votre choix:\n");
 
 		char name[STR_SIZE];   
-		char class[4];
+		char class[STR_SIZE];
 		int phone;
 
 		char filename[STR_SIZE];

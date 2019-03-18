@@ -11,9 +11,9 @@
 #ifndef READFILE_H
 #define READFILE_H
 
-#define LENGTH 256
+#define FILE_LENGTH 256
 
 int read_file(filename);
-int write_file(char*tab_name,char*tab_class,int*tab_class,int size);
+int write_file(char* file_content,int size);
 
 #endif /* READFILE_H */

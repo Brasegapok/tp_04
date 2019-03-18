@@ -1,13 +1,15 @@
+directory:hash.o,readfile.o,directory.o
+	-o 
 
-directory: directory.c, directory.h, hash.c,hash.h,readfile.c,readile.h
+directory.o: directory.c, directory.h, hash.c,hash.h,readfile.c,readile.h
 	gcc -std=c11 -Wall -Wextra -fsanitize=address  Serie_1.c -o Serie_1
 
-hash: hash.c, hash.h
+hash.o: hash.c, hash.h
 	gcc -std=c11 -Wall -Wextra -fsanitize=address  Serie_2.c -o Serie_2
 	
-readfile: readfile.c,readile.h
-	gcc -std=c11 -Wall -Wextra -fsanitize=address  readile.c -o readile
+readfile.o: readfile.c readile.h
+	gcc -std=c11 -Wall -Wextra -fsanitize=address  readile.c -c
 	
 	
-clear: directory.c, directory.h, hash.c,hash.h,readfile.c,readile.h
-	rm -rf directory.c -rf directory.h -rf hash.c  -rf hash.c -rm readfile.c -rm readfile.h
+clean:
+	rm -rf *.o 
