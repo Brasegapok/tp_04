@@ -1,11 +1,19 @@
+/**
+ *	PROJECT NAME	: tp_04 -> Annuaire	
+ *	PROJECT UTILITY	: shows a list of students and allows searching for a specific one
+ * 	FILE NAME		: directory.c
+ * 	FILE UTILITY	: the main file, allows user interaction to create and build a directory of students
+ * 	AUTHOR			: Mami Francesco
+ * 	CREATION DATE	: 11.03.2019
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "hash.h"  
 
-STR_SIZE
-
 int main(int argc,char** argv) {
+	Directory *directory;
+	int size;
 	// !!! DO NOT MODIFY !!!
 	FILE* input = stdin;
 	if (argc > 1) {
@@ -15,8 +23,17 @@ int main(int argc,char** argv) {
 			fprintf(stderr, "File not found \"%s\"!", filename);
 			return EXIT_FAILURE;
 		}
+		
+		int file_size = 0;
+		char* file_content =read_file(filename,file_size);
+
+		//here is the main directory with it's size
+		directory = new_directory(file_content,file_size);
+		size = file_size;
+		free(file_content);
+		free(file_size);
 	}
-	directory = new_diretory()
+	
 	int choice;
 	do {
 		// !!! DO NOT MODIFY this output!!!
@@ -51,21 +68,37 @@ int main(int argc,char** argv) {
 				// Keyboard input <1: filename>
 				// (Example) 1: students.txt
 				fscanf(input,"%s",filename);  // !!! DO NOT MODIFY !!!
+				
 				// Call here your function that loads the file <filename>
+				int file_size = 0;
+				char* file_content = read_file(filename,file_size);
+				
+				//removes the previous values of the directory
+				free(directory);
+				free(size);
+
+				//initialises the new value of the directory
+				directory = new_directory(file_content,file_size);
+				size = file_size;
 				
 				// Display <number of lines read>
-				printf("101\n");   // !!! Respect the output format !!!
+				printf("%d\n",file_size);   // !!! Respect the output format !!!
+				
+				free(file_content);
+				free(file_size);
 				break;
 
 			case 2: // Save to a file
 				// Keyboard input <2: filename>
 				// (Example) 2: output.txt
 				fscanf(input,"%s",filename);  // !!! DO NOT MODIFY !!!
+				int file_size = 0;
 				// Call here your function that saves the file <filename>
-				
-
+				char* file_content = prepare_directory_file(directory,size,file_size);
+				write_file(filename,file_content,file_size);
+				free(file_content);
 				// Output <number of written lines>
-				printf("103\n");   // !!! Respect the output format !!!
+				printf("%d\n",file_size);   // !!! Respect the output format !!!
 				break;
 
 			case 3: // Insert a person
@@ -83,7 +116,7 @@ int main(int argc,char** argv) {
 
 				// Call here your function to insert name, class, phone in directory.
 				
-				insert_student(name,class,phone,directory,size);
+				insert_new_student(name,class,phone,directory,size);
 				// No on-screen output
 
 				break;
@@ -166,13 +199,17 @@ int main(int argc,char** argv) {
 				// Keyboard input <9:> */       
 				// Call your function querying how full is the directory
 				// Output <elements count> and <taille> from the hash table
-				check_directory_space(directory,size);
+				int directory_space = check_directory_space(directory,size);
+				printf("%d %d",directory_space,size);
 				//printf("87 151\n");   // !!! Respect the output format !!!
 				break;     
 		}
 	} while (choice);
 
 	fclose(input);
+
+	free(directory);
+	free(size);
 
 	return EXIT_SUCCESS;
 }
