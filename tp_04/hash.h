@@ -14,7 +14,7 @@
 #define DEFAULT_DIREC_SIZE 100
 #define SIZE_EXTENSION 20
 
-typedef Key;
+typedef int Key;
 typedef enum{FULL,EMPTY,DELETED} State_Element;
 
 typedef struct{
@@ -38,9 +38,9 @@ char* prepare_directory_file(Directory* tab,int size,int *file_size);
 int check_directory_space(Directory* tab,int size);
 void search_student_by_name(char* name,Directory *tab,int size);
 void search_student_by_phone(int phone,Directory *tab,int size);
-void insert_new_student(char *student_name, char* student_class, int student_phone, Directory **tab, int size);
-void delete_student_by_name(char* name,Directory **tab,int size);
-void delete_student_by_phone(int phone,Directory **tab,int size);
+void insert_new_student(char *student_name, char* student_class, int student_phone, Directory *tab, int size);
+void delete_student_by_name(char* name,Directory *tab,int size);
+void delete_student_by_phone(int phone,Directory *tab,int size);
 int print_directory(Directory *tab,int size);
 
 

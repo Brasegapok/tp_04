@@ -10,10 +10,13 @@
 #include <stdio.h>
 #include <string.h>
 #include "hash.h"  
+#include "readfile.h"
 
 int main(int argc,char** argv) {
-	Directory *directory;
-	int size;
+	Directory* directory;
+	int size = 0;
+	int file_size;
+	char* file_content;
 	// !!! DO NOT MODIFY !!!
 	FILE* input = stdin;
 	if (argc > 1) {
@@ -24,14 +27,13 @@ int main(int argc,char** argv) {
 			return EXIT_FAILURE;
 		}
 		
-		int file_size = 0;
-		char* file_content =read_file(filename,file_size);
+		file_size = 0;
+		file_content = read_file(filename,&file_size);
 
 		//here is the main directory with it's size
 		directory = new_directory(file_content,file_size);
 		size = file_size;
 		free(file_content);
-		free(file_size);
 	}
 	
 	int choice;
@@ -70,12 +72,11 @@ int main(int argc,char** argv) {
 				fscanf(input,"%s",filename);  // !!! DO NOT MODIFY !!!
 				
 				// Call here your function that loads the file <filename>
-				int file_size = 0;
-				char* file_content = read_file(filename,file_size);
+				file_size = 0;
+				file_content = read_file(filename,&file_size);
 				
 				//removes the previous values of the directory
 				free(directory);
-				free(size);
 
 				//initialises the new value of the directory
 				directory = new_directory(file_content,file_size);
@@ -83,18 +84,16 @@ int main(int argc,char** argv) {
 				
 				// Display <number of lines read>
 				printf("%d\n",file_size);   // !!! Respect the output format !!!
-				
 				free(file_content);
-				free(file_size);
 				break;
 
 			case 2: // Save to a file
 				// Keyboard input <2: filename>
 				// (Example) 2: output.txt
 				fscanf(input,"%s",filename);  // !!! DO NOT MODIFY !!!
-				int file_size = 0;
+				file_size = 0;
 				// Call here your function that saves the file <filename>
-				char* file_content = prepare_directory_file(directory,size,file_size);
+				file_content = prepare_directory_file(directory,size,&file_size);
 				write_file(filename,file_content,file_size);
 				free(file_content);
 				// Output <number of written lines>
@@ -195,21 +194,24 @@ int main(int argc,char** argv) {
 				*/
 				break;
 
-			case 9: // How full is the directory?
-				// Keyboard input <9:> */       
-				// Call your function querying how full is the directory
-				// Output <elements count> and <taille> from the hash table
-				int directory_space = check_directory_space(directory,size);
-				printf("%d %d",directory_space,size);
-				//printf("87 151\n");   // !!! Respect the output format !!!
-				break;     
+			case 9:
+				{
+					// How full is the directory?
+					// Keyboard input <9:> */       
+					// Call your function querying how full is the directory
+					// Output <elements count> and <taille> from the hash table
+					int directory_space = 0;
+					//check_directory_space(directory,size);
+					printf("%d %d",directory_space,size);
+					//printf("87 151\n");   // !!! Respect the output format !!!
+					break;
+				}     
 		}
 	} while (choice);
 
 	fclose(input);
 
 	free(directory);
-	free(size);
 
 	return EXIT_SUCCESS;
 }

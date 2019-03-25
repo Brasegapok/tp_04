@@ -35,7 +35,7 @@ char* read_file(char *filename, int* file_size)
 		fprintf(stderr,"file not found: %s\n", filename);
 		return EXIT_FAILURE;
 	}
-	int line_cnt = 0;
+	int line_cnt = 0;prepare_directory_file
 	//reads the whole file while placing each line into a 
 	while ((fgets(line, FILE_LENGTH, fp)) != NULL ) {		
 		file_content[line_cnt] = line;
@@ -43,10 +43,9 @@ char* read_file(char *filename, int* file_size)
 	}
 	// Close the file
 	fclose(fp); 
-	file_size = line_cnt;
+	*file_size = line_cnt;
 	return file_content;
 }
-
 
 
 int main(int argc,char** argv) {
