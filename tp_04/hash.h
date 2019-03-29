@@ -11,8 +11,9 @@
 
 #define MAX_FIELDS 3
 #define STR_SIZE 80
-#define DEFAULT_DIREC_SIZE 100
-#define SIZE_EXTENSION 20
+//#define DEFAULT_DIREC_SIZE 100
+#define SIZE_EXTENSION 100
+#define PERCENTAGE_BEFORE_EXTENSION 20.0
 
 typedef int Key;
 typedef enum{FULL,EMPTY,DELETED} State_Element;

@@ -11,6 +11,7 @@
 #define READFILE_H
 
 #define FILE_LENGTH 256
+#define NB_FIELDS 3
 
 
 char* read_file(char* filename,int* file_size);

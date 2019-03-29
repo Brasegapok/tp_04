@@ -15,30 +15,32 @@
 
 int write_file(char*filename,char* file_content,int size)
 {
+	FILE *fp;
 	// Open file for reading
 	fp = fopen(filename,"w");
 	for(int i = 0; i < size; i++)
 	{
-		fprintf (fp,"%s\n",file_content[i]);
+		fprintf(fp,"%s\n",file_content[i]);
 	}
-	fclose();
-	
+	fclose(fp);
 }
 
 //reads a file and returns a table
 char* read_file(char *filename, int* file_size)
 {	
+	char line[FILE_LENGTH];
+	FILE *fp;
 	char* file_content = malloc(FILE_LENGTH* sizeof(char));
 	// Open file for reading
 	fp = fopen(filename,"r");
 	if (!fp) {
 		fprintf(stderr,"file not found: %s\n", filename);
-		return EXIT_FAILURE;
 	}
-	int line_cnt = 0;prepare_directory_file
+	int line_cnt = 0;
 	//reads the whole file while placing each line into a 
 	while ((fgets(line, FILE_LENGTH, fp)) != NULL ) {		
-		file_content[line_cnt] = line;
+		//file_content[line_cnt] = line;
+		strcpy(file_content[line_cnt], line);
 		line_cnt++;
 	}
 	// Close the file
@@ -49,7 +51,7 @@ char* read_file(char *filename, int* file_size)
 
 
 int main(int argc,char** argv) {
-	char line[LENGTH];
+	char line[FILE_LENGTH];
 	FILE *fp;
 
 	// First argument is the file to read
@@ -67,24 +69,23 @@ int main(int argc,char** argv) {
 
 	// Read the #lines
 	int line_cnt = 0;
-	while ((fgets(line,LENGTH,fp)) != NULL ) line_cnt++;
+	while ((fgets(line, FILE_LENGTH,fp)) != NULL ) line_cnt++;
 	rewind(fp);
 
 	// Read and print each line in the file
 	char sep[] = ";";
-	int nb_fields = 3;
 	line_cnt = 1;
 
-	while ((fgets(line, LENGTH, fp)) != NULL ) {
+	while ((fgets(line, FILE_LENGTH, fp)) != NULL ) {
 		char *token;
 		// Point to first token
 		token = strtok(line, sep);
 		// Iterate through other tokens and store them in fields
 		int cnt = 0;
-		char *fields[nb_fields];
+		char *fields[NB_FIELDS];
 
 		while (token) {
-			if (cnt >= nb_fields) {
+			if (cnt >= NB_FIELDS) {
 				fprintf(stderr, "line %d has too many fields!\n", line_cnt);
 				continue;
 			}
