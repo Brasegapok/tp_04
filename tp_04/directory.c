@@ -13,6 +13,7 @@
 #include "readfile.h"
 
 int main(int argc,char** argv) {
+	Phone_directory* phone_directory = NULL;
 	Directory* directory;
 	int size = 0;
 	int file_size;
@@ -31,7 +32,7 @@ int main(int argc,char** argv) {
 		file_content = read_file(filename,&file_size);
 
 		//here is the main directory with it's size
-		directory = new_directory(file_content,file_size);
+		directory = new_directory(file_content,phone_directory,&file_size);
 		size = file_size;
 		free(file_content);
 	}
@@ -79,7 +80,7 @@ int main(int argc,char** argv) {
 				free(directory);
 
 				//initialises the new value of the directory
-				directory = new_directory(file_content,file_size);
+				directory = new_directory(file_content,phone_directory,&file_size);
 				size = file_size;
 				
 				// Display <number of lines read>
@@ -115,7 +116,7 @@ int main(int argc,char** argv) {
 
 				// Call here your function to insert name, class, phone in directory.
 				
-				insert_new_student(name,class,phone,directory,size);
+				insert_new_student(name,class,phone,directory,phone_directory,&size);
 				// No on-screen output
 
 				break;
@@ -146,7 +147,7 @@ int main(int argc,char** argv) {
 				//               <name2;class2;phone>
 				//               <name3;clase3;phone>
 				//               ....
-				search_student_by_phone(phone,directory,size);
+				search_student_by_phone(phone,directory,phone_directory,size);
 				/*
 				printf("4\n"); // number of entries with this phone number
 				printf("Michel Joguin;MT1;3458127\n");  // !!! Respect the output format !!!
@@ -162,7 +163,7 @@ int main(int argc,char** argv) {
 				fgets(line, STR_SIZE, input);    // !!! DO NOT MODIFY !!!
 				sscanf(line," %80[^\n]", name);  // !!! DO NOT MODIFY !!!
 				// Call your function to suppress <name> in the directory
-				delete_student_by_name(name,directory,size);
+				delete_student_by_name(name,directory,phone_directory,size);
 				// No output
 				break;
 
@@ -172,7 +173,7 @@ int main(int argc,char** argv) {
 				fscanf(input,"%d", &phone);  // !!! DO NOT MODIFY !!! 
 				// Call your function to suppress by phone
 
-				delete_student_by_phone(phone, directory,size);
+				delete_student_by_phone(phone, directory,phone_directory,size);
 
 				// No output
 				break;
@@ -210,7 +211,7 @@ int main(int argc,char** argv) {
 	} while (choice);
 
 	fclose(input);
-
+	free(phone_directory);
 	free(directory);
 
 	return EXIT_SUCCESS;

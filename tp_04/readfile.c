@@ -12,7 +12,6 @@
 #include <libgen.h>
 #include "readfile.h"
 
-
 int write_file(char*filename,char* file_content,int size)
 {
 	FILE *fp;
@@ -49,7 +48,7 @@ char* read_file(char *filename, int* file_size)
 	return file_content;
 }
 
-
+/*
 int main(int argc,char** argv) {
 	char line[FILE_LENGTH];
 	FILE *fp;
@@ -102,4 +101,4 @@ int main(int argc,char** argv) {
 	fclose(fp); 
 	return EXIT_SUCCESS;
 }
-
+*/
